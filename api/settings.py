@@ -24,8 +24,9 @@ SECRET_KEY = 'django-insecure-tz0uqdyt8-@d1w0%4-v-kqvq2v+l1z%$6dx5kc2fe4ayw@)^%o
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# SECURE_REFERRER_POLICY='origin-when-cross-origin'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,12 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'cms',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -122,3 +125,28 @@ STATIC_ROOT= BASE_DIR / 'static'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+# ]
+# CORS_ORIGIN_WHITELIST = (
+#     'localhost:3000',
+# )
+# CSRF_TRUSTED_ORIGINS  = [
+#     "http://localhost:3000",
+# ]
+
+# CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SAMESITE = "None"
+# SESSION_COOKIE_SAMESITE = "None"
+
+# CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOW_HEADERS = [
+#     "accept",
+#     "authorization",
+#     "content-type",
+#     "user-agent",
+#     "x-csrftoken",
+#     "x-requested-with",
+#     "x-xsrf-token"]

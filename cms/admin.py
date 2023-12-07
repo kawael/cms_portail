@@ -19,8 +19,14 @@ class TagAdmin(admin.ModelAdmin):
 
 class ImageAdmin(admin.ModelAdmin):
     list_display = ['image', 'alt_text']
+class SourceAdmin(admin.ModelAdmin):
+    list_display = ['name', 'url']
+class EventAdmin(admin.ModelAdmin):
+    list_display = ['title','description','start_date','end_date']
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Tag, TagAdmin)
 admin.site.register(User, UserAdmin)
 admin.site.register(Image, ImageAdmin)
+admin.site.register(Source, SourceAdmin)
+admin.site.register(Event, EventAdmin)
