@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import FileExtensionValidator
 class User(AbstractUser):
     class Meta:
         db_table = 'user'
@@ -25,7 +26,7 @@ class Tag(models.Model):
         return self.name
     
 class Image(models.Model):
-    image= models.ImageField(upload_to='images/')
+    image= models.ImageField(upload_to='images/',validators=[FileExtensionValidator(allowed_extensions=['svg'])])
     alt_text= models.CharField(max_length=255)
     caption= models.TextField(blank=True)
     class Meta:
