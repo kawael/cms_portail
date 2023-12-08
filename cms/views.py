@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import Http404
 from ninja import NinjaAPI
-from .models import User, Article
-from .schemas import ArticleSchema
+from .models import User, Article,Image
+from .schemas import ArticleSchema,ImageSchema
 from typing import List
 
 api = NinjaAPI()
@@ -26,3 +26,20 @@ def create_article(request):
         return article
     except User.DoesNotExist:
         raise Http404("User not found")
+    
+
+@api.get("/images/{image_nom}", response=ImageSchema)
+def get_image(request, image_nom: str):
+    try:
+        return Image.objects.get(alt_text=image_nom)
+    except Image.DoesNotExist:
+        raise Http404("Image not found")
+
+@api.post("/imagess", response=List[ImageSchema])
+def get_images(request):
+    try:
+        # user = User.objects.get(pk=User_id)
+        article = Image.objects.all()
+        return article
+    except Image.DoesNotExist:
+        raise Http404("Images not found")
