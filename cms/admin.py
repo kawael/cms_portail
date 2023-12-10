@@ -32,6 +32,9 @@ class SourceAdmin(admin.ModelAdmin):
     list_display = ['name', 'url']
 class EventAdmin(admin.ModelAdmin):
     list_display = ['title','description','start_date','end_date']
+
+class FlashAdmin(admin.ModelAdmin):
+    list_display = ['message','end_date','status','link']
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Tag, TagAdmin)
@@ -39,3 +42,4 @@ admin.site.register(User, UserAdmin)
 admin.site.register(Image, ImageAdmin)
 admin.site.register(Source, SourceAdmin)
 admin.site.register(Event, EventAdmin)
+admin.site.register(Flash,FlashAdmin)

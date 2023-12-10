@@ -70,3 +70,14 @@ class Event(models.Model):
     
     def __str__(self) -> str:
         return self.title
+
+class Flash(models.Model):
+    message= models.CharField(max_length=255,blank=True)
+    end_date = models.DateField(null=True)
+    status = models.CharField(max_length=50,blank=True)
+    link = models.CharField(max_length=255,blank=True)
+    class Meta:
+        db_table="flash"
+
+    def __str__(self) -> str:
+        return self.message

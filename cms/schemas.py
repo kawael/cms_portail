@@ -1,7 +1,7 @@
 from ninja import ModelSchema
 from .models import *
 from typing import List
-from datetime import datetime
+from datetime import datetime,date
 
 class ImageSchema(ModelSchema):
     class Config:
@@ -20,6 +20,14 @@ class CategorySchema(ModelSchema):
         model= Category
         model_fields = ['name','slug']
     
+class FlashSchema(ModelSchema):
+    message: str =None
+    end_date: date =None
+    status: str =None
+    link: str =None
+    class Config:
+        model= Flash
+        model_fields = ['message','end_date','status','link']
 class ArticleSchema(ModelSchema):
     image: ImageSchema = None
     tags: List[TagSchema] = []
